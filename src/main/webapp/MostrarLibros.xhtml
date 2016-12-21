@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<f:view>
+	<body>
+		<h:form>
+			<h:commandButton action="#{formularioLibroManagedBean.changeLanguage('')}"
+				value="Español" />
+			<h:commandButton action="#{formularioLibroManagedBean.changeLanguage('en')}"
+				value="English" />
+
+			<h:selectOneMenu id="combo"
+				valueChangeListener="#{formularioLibroManagedBean.filtrar}"
+				value="#{formularioLibroManagedBean.categoria}" onchange="submit()">
+				<f:selectItem itemValue="0"
+					itemLabel="#{msg['mostrarLibros.defaultSelectItem']}" />
+				<f:selectItems
+					value="#{formularioLibroManagedBean.listaDeCategorias}"
+					var="categoria" itemLabel="#{categoria.descripcion}"
+					itemValue="#{categoria.id}" />
+			</h:selectOneMenu>
+			<h:dataTable id="tabla"
+				value="#{formularioLibroManagedBean.listaDeLibros}" var="libro">
+				<h:column> #{libro.isbn} </h:column>
+				<h:column> #{libro.titulo} </h:column>
+				<h:column> #{libro.categoria.descripcion} </h:column>
+				<h:column>
+					<h:commandLink value="borrar"
+						actionListener="#{formularioLibroManagedBean.borrar(libro.isbn)}">
+					</h:commandLink>
+				</h:column>
+				<h:column>
+					<h:commandLink value="editar"
+						actionListener="#{formularioLibroManagedBean.editar(libro.isbn)}"
+						action="FormularioEditarLibro">
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+			<h:commandButton
+				actionListener="#{formularioLibroManagedBean.formularioInsertar}"
+				action="FormularioInsertarLibro" value="insertar" />
+		</h:form>
+	</body>
+</f:view>
+</html>

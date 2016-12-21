@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+	<application>
+		<locale-config>
+			<default-locale>es</default-locale>
+			<supported-locale>en</supported-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msg</var>
+		</resource-bundle>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+	</application>
+	
+	<managed-bean>
+		<managed-bean-name>controlCache</managed-bean-name>
+		<managed-bean-class>java.util.Date</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>controlAjaxTimeout</managed-bean-name>
+		<managed-bean-class>com.miradorlacala.apt.beans.ControlAjaxTimeout</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+		<managed-property>
+			<property-name>ajaxTimeout</property-name>
+			<value>#{ajaxTimeout}</value>
+		</managed-property>
+	</managed-bean>
+	
+
+	
+</faces-config>

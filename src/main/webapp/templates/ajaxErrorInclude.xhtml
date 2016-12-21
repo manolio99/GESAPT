@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="gesaptErrorHandlerForm">
+
+		<p:dialog draggable="true"
+			header="error.sessionTimeOut.cabecera"
+			widgetVar="sessionTimeOutDialog" id="sessionTimeOutDialog"
+			modal="true" fixedCenter="true" closable="false" width="400"
+			height="110">
+			<h:panelGrid columns="1" cellpadding="10" cellspacing="10">
+				<h:outputText value="error.sessionTimeOut.texto" />
+				<h:panelGroup id="sessionTimeOutCodigoError"></h:panelGroup>
+				<input id="sessionTimeOutButton" type="button"
+					value="error.sessionTimeOut.boton"
+					onclick="salir();" />
+			</h:panelGrid>
+		</p:dialog>
+
+		<p:dialog draggable="true"
+			header="error.ajaxTimeOut.cabecera"
+			widgetVar="ajaxTimeOutDialog" id="ajaxTimeOutDialog" modal="true"
+			fixedCenter="true" closable="false" width="400" height="100">
+			<h:panelGrid columns="1" cellpadding="10" cellspacing="10">
+				<h:outputText value="error.ajaxTimeOut.texto" />
+				<input id="ajaxTimeOutButton" type="button"
+					value="error.ajaxTimeOut.boton"
+					onclick="ajaxTimeOutDialog.hide();" />
+			</h:panelGrid>
+		</p:dialog>
+
+	</h:form>
+</ui:composition>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="formHeader">
+		<div id="header-container">
+			<div id="header-logo">
+				<h1>#{msg['header.logo']}</h1>
+			</div>
+
+			<div id="header-languages">
+				<h:commandLink title="#{msg['header.language.es']}"
+					actionListener="#{controlLanguagesBean.changeLanguage('')}">
+					<i class="flag-es"></i>
+				</h:commandLink>
+				<h:commandLink title="#{msg['header.language.en']}"
+					actionListener="#{controlLanguagesBean.changeLanguage('en')}">
+					<i class="flag-en"></i>
+				</h:commandLink>
+			</div>
+		</div>
+	</h:form>
+</ui:composition>
