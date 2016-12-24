@@ -1,3 +1,5 @@
+-- definicion de base de datos
+
 CREATE  TABLE `gesapt`.`prices` (
 `idPrice` INT NOT NULL AUTO_INCREMENT ,
 `startDate` DATE NULL ,
