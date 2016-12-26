@@ -9,7 +9,7 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   <welcome-file-list>
-    <welcome-file>precios.xhtml</welcome-file>
+    <welcome-file>prices.xhtml</welcome-file>
     <welcome-file>index.xhtml</welcome-file>
   </welcome-file-list>
   <error-page>

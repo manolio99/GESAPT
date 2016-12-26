@@ -17,6 +17,7 @@
 		<hibernate.version>3.6.10.Final</hibernate.version>
 		<spring.version>4.0.9.RELEASE</spring.version>
 		<jsf.version>2.1.9</jsf.version>
+		<primefaces.version>6.0</primefaces.version>
 		<cxf.version>2.7.18</cxf.version>
 		<log4j.version>1.2.17</log4j.version>
 		<junit.version>4.12</junit.version>
@@ -118,7 +119,7 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>5.3</version>
+			<version>${primefaces.version}</version>
 		</dependency>
 		
 		<!-- CXF -->

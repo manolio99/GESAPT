@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/commonLayout.xhtml">
+
+	<ui:define name="windowTitle">
+		#{messages['aplication.window.title']}
+	</ui:define>
+	
+	<ui:define name="main">
+		<h:form id="formMain">
+			<p:ajaxStatus onerror="PF('sessionTimeOutDialog').show();" />
+
+			<p:dialog modal="true" widgetVar="statusDialog" id="statusDialog"
+				header="PROCESANDO" width="250" height="50" draggable="true"
+				closable="false">
+				<img src="#{request.contextPath}/images/ajax-loader.gif" />
+			</p:dialog>
+			
+			<h:outputText value="#{msg['stats.title']}" />
+			
+		</h:form>
+	</ui:define>
+
+</ui:composition>

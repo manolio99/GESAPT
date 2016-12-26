@@ -5,23 +5,53 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 	<h:form id="formMenu">
+		<p:importEnum type="com.miradorlacala.apt.util.MenuOption"
+			var="MenuOption" />
+
+		<c:set var="price" value="#{MenuOption.PRICES}" />
+		<c:set var="newRental" value="#{MenuOption.NEW_RENTAL}" />
+		<c:set var="searchRental" value="#{MenuOption.SEARCH_RENTAL}" />
+		<c:set var="newTenant" value="#{MenuOption.NEW_TENANT}" />
+		<c:set var="searchTenant" value="#{MenuOption.SEARCH_TENANT}" />
+		<c:set var="statics" value="#{MenuOption.STATS}" />
+
 		<div id="menu">
 			<ul>
-				<li><a class="active" href="#home"><h:outputText
-							value="#{msg['menu.prices']}" /></a></li>
-				<li><a href="#news"><h:outputText
-							value="#{msg['menu.newRental']}" /></a></li>
-				<li><a href="#contact"><h:outputText
-							value="#{msg['menu.searchRental']}" /></a></li>
-				<li><a href="#about"><h:outputText
-							value="#{msg['menu.newTenant']}" /></a></li>
-				<li><a href="#about"><h:outputText
-							value="#{msg['menu.searchTentant']}" /></a></li>
-				<li><a href="#about"><h:outputText
-							value="#{msg['menu.stats']}" /></a></li>
+				<li><p:commandLink id="prices" update="formMenu formMain"
+						styleClass="#{controlMenuBean.isOptionStyle(price)}"
+						action="#{controlMenuBean.changeToMenuOption(price)}">
+						<h:outputText value="#{msg['menu.prices']}" />
+					</p:commandLink></li>
+				<li><p:commandLink id="newRental" update="formMenu formMain"
+						styleClass="#{controlMenuBean.isOptionStyle(newRental)}"
+						action="#{controlMenuBean.changeToMenuOption(newRental)}">
+						<h:outputText value="#{msg['menu.newRental']}" />
+					</p:commandLink></li>
+				<li><p:commandLink id="searchRental" update="formMenu formMain"
+						styleClass="#{controlMenuBean.isOptionStyle(searchRental)}"
+						action="#{controlMenuBean.changeToMenuOption(searchRental)}">
+						<h:outputText value="#{msg['menu.searchRental']}" />
+					</p:commandLink></li>
+				<li><p:commandLink id="newTenant" update="formMenu formMain"
+						styleClass="#{controlMenuBean.isOptionStyle(newTenant)}"
+						action="#{controlMenuBean.changeToMenuOption(newTenant)}">
+						<h:outputText value="#{msg['menu.newTenant']}" />
+					</p:commandLink></li>
+				<li><p:commandLink id="searchTentant"
+						update="formMenu formMain"
+						styleClass="#{controlMenuBean.isOptionStyle(searchTenant)}"
+						action="#{controlMenuBean.changeToMenuOption(searchTenant)}">
+						<h:outputText value="#{msg['menu.searchTentant']}" />
+					</p:commandLink></li>
+				<li><p:commandLink id="stats" update="formMenu formMain"
+						styleClass="#{controlMenuBean.isOptionStyle(statics)}"
+						action="#{controlMenuBean.changeToMenuOption(statics)}">
+						<h:outputText value="#{msg['menu.stats']}" />
+					</p:commandLink></li>
 			</ul>
 		</div>
 	</h:form>
