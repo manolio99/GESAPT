@@ -1,0 +1,37 @@
+.ui-datatable.ui-widget {
+	margin: 10px 0px;
+	text-align: center;
+	font-size: 15px;
+}
+
+.smallButton.ui-button.ui-widget, .smallDate .ui-inputfield.ui-widget,
+.smallInput.ui-inputfield.ui-inputtext.ui-widget, .ui-datepicker.ui-widget
+{
+	font-size: 13px;
+}
+
+.searchEmail.ui-panelgrid.ui-widget {
+	margin: 10px 0px;
+	width: 100%;
+	border-style: groove;
+	border-width: 1px;
+	border-color: inherit;
+}
+
+.searchEmail .ui-widget-content {
+	border: 0px;
+}
+
+.searchEmail .ui-panelgrid-cell {
+	border-style: none;
+}
+
+.smallSelectOneMenu.ui-selectonemenu.ui-widget {
+	font-size: 13px;
+}
+
+.smallSelectOneMenu .ui-selectonemenu-items.ui-selectonemenu-list.ui-widget-content.ui-widget {
+	font-size: 13px;
+	width: auto;
+}
+

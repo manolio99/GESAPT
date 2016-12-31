@@ -15,45 +15,45 @@ import com.miradorlacala.apt.dao.GenericDAO;
 
 @Repository
 public abstract class GenericDAOJPAImpl<T, Id extends Serializable> implements GenericDAO<T, Id> {
-	private Class<T> claseDePersistencia;
+	private Class<T> persistenceClass;
 
 	@PersistenceContext
 	private EntityManager manager;
 
 	@SuppressWarnings("unchecked")
 	public GenericDAOJPAImpl() {
-		this.claseDePersistencia = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
+		this.persistenceClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
 				.getActualTypeArguments()[0];
 	}
 
-	public T buscarPorClave(Id id) {
-		return getManager().find(claseDePersistencia, id);
+	public T searchById(Id id) {
+		return getManager().find(persistenceClass, id);
 	}
 
 	@Transactional(readOnly = true)
-	public List<T> buscarTodos() {
-		List<T> listaDeObjetos = null;
-		TypedQuery<T> consulta = manager.createQuery("select o from " + claseDePersistencia.getSimpleName() + " o",
-				claseDePersistencia);
-		listaDeObjetos = consulta.getResultList();
-		return listaDeObjetos;
+	public List<T> searchAll() {
+		List<T> allObjects = null;
+		TypedQuery<T> query = manager.createQuery("select o from " + persistenceClass.getSimpleName() + " o",
+				persistenceClass);
+		allObjects = query.getResultList();
+		return allObjects;
 	}
 
 	@Transactional
-	public void borrar(T objeto) {
-		getManager().remove(getManager().merge(objeto));
+	public void delete(T objet) {
+		getManager().remove(getManager().merge(objet));
 	}
 
 	@Transactional
-	public void salvar(T objeto) {
-		getManager().merge(objeto);
+	public void save(T objet) {
+		getManager().merge(objet);
 	}
 
 	@Transactional
-	public void insertar(T objeto) {
-		getManager().persist(objeto);
+	public void insert(T objet) {
+		getManager().persist(objet);
 	}
-
+	
 	// GETTERS Y SETTERS
 
 	public EntityManager getManager() {

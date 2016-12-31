@@ -22,7 +22,143 @@
 				<img src="#{request.contextPath}/images/ajax-loader.gif" />
 			</p:dialog>
 
-			<h:outputText value="#{msg['prices.title']}" />
+			<div>
+				<p:commandButton value="#{msg['prices.updatePrices']}"
+					update="tablePrices"
+					actionListener="#{pricesManagedBean.updatePrices}"
+					icon="ui-icon-refresh" styleClass="smallButton" style="float:left;">
+				</p:commandButton>
+				<h:outputText value="#{pricesManagedBean.modificationDate}"
+					style="float:right;margin-top:7px;" />
+			</div>
+			<div style="clear: both;"></div>
+
+			<p:dataTable id="tablePrices" var="price"
+				value="#{pricesManagedBean.prices}"
+				emptyMessage="#{msg['global.noInfo']}">
+				<p:column headerText="#{msg['prices.column.startDate']}"
+					priority="1">
+					<h:outputText value="#{price.startDate}">
+						<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="#{msg['prices.column.endDate']}" priority="1">
+					<h:outputText value="#{price.endDate}">
+						<f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="#{msg['prices.column.priceNight']}"
+					priority="2">
+					<h:outputText value="#{price.priceNight}">
+						<f:convertNumber type="currency" currencySymbol="€" locale="es-ES" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="#{msg['prices.column.priceNightWeekend']}"
+					priority="2">
+					<h:outputText value="#{price.priceNightWeekend}">
+						<f:convertNumber type="currency" currencySymbol="€" locale="es-ES" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="#{msg['prices.column.priceWeek']}"
+					priority="1">
+					<h:outputText value="#{price.priceWeek}">
+						<f:convertNumber type="currency" currencySymbol="€" locale="es-ES" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="#{msg['prices.column.priceForty']}"
+					priority="1">
+					<h:outputText value="#{price.priceForty}">
+						<f:convertNumber type="currency" currencySymbol="€" locale="es-ES" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="#{msg['prices.column.priceMonth']}"
+					priority="1">
+					<h:outputText value="#{price.priceMonth}">
+						<f:convertNumber type="currency" currencySymbol="€" locale="es-ES" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="#{msg['prices.column.priceExtraNight']}"
+					priority="2">
+					<h:outputText value="#{price.priceExtraNight}">
+						<f:convertNumber type="currency" currencySymbol="€" locale="es-ES" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="#{msg['prices.column.minimumRental']}"
+					priority="2">
+					<h:outputText value="#{price.minimumRental}" />
+				</p:column>
+
+			</p:dataTable>
+
+			<h:outputText value="#{pricesManagedBean.offerMsg}" />
+
+			<p:panelGrid id="searchEmail" styleClass="searchEmail">
+				<p:row>
+					<p:column>
+						<h:outputText value="#{msg['prices.entryDate']}" />
+					</p:column>
+					<p:column>
+						<p:calendar value="#{pricesManagedBean.request.entryDate}"
+							pattern="dd/MM/yyyy" mask="true" styleClass="smallDate" />
+<!-- TODO				required="true" requiredMessage="Please provide a date." -->
+					</p:column>
+					<p:column>
+						<h:outputText value="#{msg['prices.departureDate']}" />
+					</p:column>
+					<p:column>
+						<p:calendar value="#{pricesManagedBean.request.departureDate}"
+							pattern="dd/MM/yyyy" mask="true" styleClass="smallDate" />
+<!-- TODO				required="true" requiredMessage="Please provide a date." -->
+					</p:column>
+					<p:column>
+						<h:outputText value="#{msg['prices.language']}" />
+					</p:column>
+					<p:column>
+						<p:selectOneMenu value="#{pricesManagedBean.request.language}" 
+							styleClass="smallSelectOneMenu" panelStyleClass="smallSelectOneMenu">
+							<f:selectItems
+								value="#{pricesManagedBean.mapLanguages.entrySet()}"
+								var="language" itemLabel="#{language.value}"
+								itemValue="#{language.key}" />
+						</p:selectOneMenu>
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<h:outputText value="#{msg['prices.name']}" />
+					</p:column>
+					<p:column>
+						<p:inputText value="#{pricesManagedBean.request.name}"
+							styleClass="smallInput" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{msg['prices.phone']}" />
+					</p:column>
+					<p:column>
+						<p:inputText value="#{pricesManagedBean.request.phone}"
+							styleClass="smallInput" />
+					</p:column>
+					<p:column colspan="2">
+						<p:commandButton value="#{msg['prices.searchAvailability']}"
+							actionListener="#{pricesManagedBean.searchAvailability()}"
+							styleClass="smallButton" update="email">
+						</p:commandButton>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
+			<p:outputPanel id="email">
+				<h:outputText value="#{pricesManagedBean.email}" />
+			</p:outputPanel>
 
 		</h:form>
 	</ui:define>

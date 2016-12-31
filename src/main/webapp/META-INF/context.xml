@@ -1,6 +1,6 @@
 <Context path="/GESAPT" docBase="/GESAPT"
 	reloadable="true" crossContext="true">
-	<Resource name="jdbc/MiDataSource" auth="Container" type="javax.sql.DataSource"
+	<Resource name="jdbc/gesaptDataSource" auth="Container" type="javax.sql.DataSource"
 		maxActive="100" maxIdle="30" maxWait="10000" username="root" password="root"
-		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/arquitecturajava" />
+		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/gesapt" />
 </Context>

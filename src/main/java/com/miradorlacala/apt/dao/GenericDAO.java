@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface GenericDAO<T, Id extends Serializable> {
-	T buscarPorClave(Id id);
 
-	List<T> buscarTodos();
+	public T searchById(Id id);
 
-	void salvar(T objeto);
+	public List<T> searchAll();
 
-	void borrar(T objeto);
+	public void save(T objeto);
+
+	public void delete(T objeto);
 	
-	void insertar(T objeto);
+	public void insert(T objeto);
+
 }

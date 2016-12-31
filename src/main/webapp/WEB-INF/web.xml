@@ -11,6 +11,7 @@
   <welcome-file-list>
     <welcome-file>prices.xhtml</welcome-file>
     <welcome-file>index.xhtml</welcome-file>
+    <welcome-file>MostrarLibros.xhtml</welcome-file>
   </welcome-file-list>
   <error-page>
     <exception-type>java.lang.RuntimeException</exception-type>

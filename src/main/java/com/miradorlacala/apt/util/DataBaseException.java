@@ -1,4 +1,4 @@
-package com.miradorlacala.apt;
+package com.miradorlacala.apt.util;
 
 public class DataBaseException extends RuntimeException {
 	private static final long serialVersionUID = 1L;

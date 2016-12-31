@@ -37,24 +37,16 @@
 		implementor="com.miradorlacala.apt.serviciosexternos.impl.ServicioInformacionLibrosCXF"
 		address="servicioInformacionLibros" />
 
-	<jee:jndi-lookup id="fuenteDeDatos2" jndi-name="java:comp/env/jdbc/MiDataSource" />
-
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<bean id="fuenteDeDatos"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/arquitecturajava" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
-	</bean>
+	<jee:jndi-lookup id="gesaptDataSource" jndi-name="java:comp/env/jdbc/gesaptDataSource" />
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="arquitecturaJava" />
-		<property name="dataSource" ref="fuenteDeDatos2" />
+		<property name="persistenceUnitName" value="gesapt" />
+		<property name="dataSource" ref="gesaptDataSource" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />

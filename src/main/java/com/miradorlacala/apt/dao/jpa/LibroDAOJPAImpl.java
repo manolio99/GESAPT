@@ -13,7 +13,7 @@ import com.miradorlacala.apt.bo.Libro;
 import com.miradorlacala.apt.dao.LibroDAO;
 
 @Repository
-public class LibroDAOJPAImpl extends GenericDAOJPAImpl<Libro, String> implements LibroDAO {
+public class LibroDAOJPAImpl extends GenericDAOJPAImpl2<Libro, String> implements LibroDAO {
 	private static final Logger log = Logger.getLogger(LibroDAOJPAImpl.class.getPackage().getName());
 
 	@Transactional(readOnly = true)
