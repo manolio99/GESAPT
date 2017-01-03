@@ -16,16 +16,30 @@ CREATE  TABLE `gesapt`.`prices` (
 PRIMARY KEY (`idPrice`) ,
 UNIQUE INDEX `idPrice_UNIQUE` (`idPrice` ASC) );
 
+CREATE  TABLE `gesapt`.`languages` (
+	`idLanguage` INT NOT NULL AUTO_INCREMENT ,
+	`codeLanguage` VARCHAR(45) NULL ,
+	`descLanguage` VARCHAR(45) NULL ,
+	`labelLanguage` VARCHAR(45) NULL ,
+	PRIMARY KEY (`idLanguage`) ,
+	UNIQUE INDEX `idLanguage_UNIQUE` (`idLanguage` ASC) );
+
 CREATE TABLE `gesapt`.`requests` (
   `idRequest` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `entryDate` DATE NOT NULL,
   `departureDate` DATE NOT NULL,
-  `foreign` TINYINT NULL,
+  `idLanguage` INT NOT NULL ,
   `phone` VARCHAR(45) NULL,
   `creationDate` DATETIME NOT NULL,
   PRIMARY KEY (`idRequest`),
-  UNIQUE INDEX `idRequest_UNIQUE` (`idRequest` ASC));
+  UNIQUE INDEX `idRequest_UNIQUE` (`idRequest` ASC),
+INDEX `idLanguage_idx` (`idLanguage` ASC) ,
+CONSTRAINT `PK_idLanguage`
+  FOREIGN KEY (`idLanguage` )
+  REFERENCES `gesapt`.`languages` (`idLanguage` )
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION);
 
 CREATE  TABLE `gesapt`.`states` (
 	`idState` INT NOT NULL AUTO_INCREMENT ,
@@ -44,6 +58,7 @@ CREATE  TABLE `gesapt`.`rentals` (
 `price` DECIMAL(6,2) NOT NULL ,
 `booking` DECIMAL(6,2) NULL ,
 `deposit` DECIMAL(6,2) NULL ,
+`idLanguage` INT NOT NULL ,
 `idState` INT NOT NULL ,
 `creationDate` DATETIME NOT NULL ,
 `modificationDate` DATETIME NOT NULL ,
@@ -54,5 +69,16 @@ CONSTRAINT `PK_idState`
   FOREIGN KEY (`idState` )
   REFERENCES `gesapt`.`states` (`idState` )
   ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+INDEX `idLanguage_idx2` (`idLanguage` ASC) ,
+CONSTRAINT `PK_idLanguage2`
+  FOREIGN KEY (`idLanguage` )
+  REFERENCES `gesapt`.`languages` (`idLanguage` )
+  ON DELETE NO ACTION
   ON UPDATE NO ACTION);
 
+DROP TABLE `gesapt`.`prices`;
+DROP TABLE `gesapt`.`requests`;
+DROP TABLE `gesapt`.`rentals`;
+DROP TABLE `gesapt`.`languages`;
+DROP TABLE `gesapt`.`states`;
