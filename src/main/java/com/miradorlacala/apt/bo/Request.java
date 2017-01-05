@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,15 +13,22 @@ import javax.persistence.Table;
 public class Request {
 	@Id
 	private Integer idRequest;
+	
 	private String name;
 	private Date entryDate;
 	private Date departureDate;
-	private String language;
+	
+	@ManyToOne
+	@JoinColumn(name = "idLanguage")
+	private Language language;
+	
 	private String phone;
 	private Date creationDate;
 
 	public Request() {
 		super();
+		language = new Language();
+		language.setIdLanguage("es");
 	}
 
 	@Override
@@ -67,14 +76,16 @@ public class Request {
 		this.departureDate = departureDate;
 	}
 
-	public String getLanguage() {
+	public Language getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(String language) {
+	public void setLanguage(Language language) {
 		this.language = language;
 	}
 
+	
+	
 	public String getPhone() {
 		return phone;
 	}

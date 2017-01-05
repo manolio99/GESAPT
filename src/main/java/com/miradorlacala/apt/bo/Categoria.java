@@ -13,11 +13,17 @@ import javax.persistence.Table;
 public class Categoria {
 	@Id
 	private int id;
+	
 	private String descripcion;
+	
 	@OneToMany
 	@JoinColumn(name = "categoria")
 	private List<Libro> listaDeLibros;
 
+	public Categoria() {
+		super();
+	}
+	
 	@Override
 	public int hashCode() {
 		return id;
@@ -29,10 +35,8 @@ public class Categoria {
 		int categoriaId = ((Categoria) o).getId();
 		return id == categoriaId;
 	}
-
-	public Categoria() {
-		super();
-	}
+	
+	// GETTERS & SETTERS
 
 	public Categoria(int id) {
 		super();

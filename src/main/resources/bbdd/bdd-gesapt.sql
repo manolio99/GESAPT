@@ -1,5 +1,13 @@
--- definicion de base de datos
+-- DROP TABLES
+DROP TABLE `gesapt`.`prices`;
+DROP TABLE `gesapt`.`requests`;
+DROP TABLE `gesapt`.`rentals`;
+DROP TABLE `gesapt`.`languages`;
+DROP TABLE `gesapt`.`states`;
 
+-- DELETE FROM TABLES
+
+-- CREATE TABLES
 CREATE  TABLE `gesapt`.`prices` (
 `idPrice` INT NOT NULL AUTO_INCREMENT ,
 `startDate` DATE NULL ,
@@ -17,10 +25,8 @@ PRIMARY KEY (`idPrice`) ,
 UNIQUE INDEX `idPrice_UNIQUE` (`idPrice` ASC) );
 
 CREATE  TABLE `gesapt`.`languages` (
-	`idLanguage` INT NOT NULL AUTO_INCREMENT ,
-	`codeLanguage` VARCHAR(45) NULL ,
+	`idLanguage` VARCHAR(45) NOT NULL ,
 	`descLanguage` VARCHAR(45) NULL ,
-	`labelLanguage` VARCHAR(45) NULL ,
 	PRIMARY KEY (`idLanguage`) ,
 	UNIQUE INDEX `idLanguage_UNIQUE` (`idLanguage` ASC) );
 
@@ -29,7 +35,7 @@ CREATE TABLE `gesapt`.`requests` (
   `name` VARCHAR(45) NULL,
   `entryDate` DATE NOT NULL,
   `departureDate` DATE NOT NULL,
-  `idLanguage` INT NOT NULL ,
+  `idLanguage` VARCHAR(45) NOT NULL ,
   `phone` VARCHAR(45) NULL,
   `creationDate` DATETIME NOT NULL,
   PRIMARY KEY (`idRequest`),
@@ -58,7 +64,7 @@ CREATE  TABLE `gesapt`.`rentals` (
 `price` DECIMAL(6,2) NOT NULL ,
 `booking` DECIMAL(6,2) NULL ,
 `deposit` DECIMAL(6,2) NULL ,
-`idLanguage` INT NOT NULL ,
+`idLanguage` VARCHAR(45) NOT NULL ,
 `idState` INT NOT NULL ,
 `creationDate` DATETIME NOT NULL ,
 `modificationDate` DATETIME NOT NULL ,
@@ -77,8 +83,8 @@ CONSTRAINT `PK_idLanguage2`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION);
 
-DROP TABLE `gesapt`.`prices`;
-DROP TABLE `gesapt`.`requests`;
-DROP TABLE `gesapt`.`rentals`;
-DROP TABLE `gesapt`.`languages`;
-DROP TABLE `gesapt`.`states`;
+-- INSERT DATA TABLES
+INSERT INTO `gesapt`.`languages` (`idLanguage`, `descLanguage`) VALUES ('es', 'Spanish');
+INSERT INTO `gesapt`.`languages` (`idLanguage`, `descLanguage`) VALUES ('en', 'English');
+INSERT INTO `gesapt`.`languages` (`idLanguage`, `descLanguage`) VALUES ('fr', 'French');
+

@@ -13,7 +13,9 @@ import javax.persistence.Table;
 public class State {
 	@Id
 	private Integer idState;
+
 	private String descState;
+	
 	@OneToMany
 	@JoinColumn(name = "state")
 	private List<Rental> rentals;
@@ -34,12 +36,12 @@ public class State {
 	}
 
 	// GETTERS & SETTERS
-
-	public int getIdState() {
+	
+	public Integer getIdState() {
 		return idState;
 	}
 
-	public void setIdState(int idState) {
+	public void setIdState(Integer idState) {
 		this.idState = idState;
 	}
 
@@ -50,4 +52,13 @@ public class State {
 	public void setDescState(String descState) {
 		this.descState = descState;
 	}
+
+//	public List<Rental> getRentals() {
+//		return rentals;
+//	}
+//
+//	public void setRentals(List<Rental> rentals) {
+//		this.rentals = rentals;
+//	}		
+	
 }

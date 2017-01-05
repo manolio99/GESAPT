@@ -13,6 +13,7 @@ import javax.persistence.Table;
 public class Rental {
 	@Id
 	private Integer idRental;
+
 	private String firstName;
 	private String lastName;
 	private Date entryDate;
@@ -22,9 +23,15 @@ public class Rental {
 	private Double price;
 	private Double booking;
 	private Double deposit;
+	
 	@ManyToOne
 	@JoinColumn(name = "idState")
 	private State state;
+	
+	@ManyToOne
+	@JoinColumn(name = "idLanguage")
+	private Language language;
+	
 	private Date creationDate;
 	private Date modificationDate;
 
@@ -131,6 +138,14 @@ public class Rental {
 
 	public void setState(State state) {
 		this.state = state;
+	}
+	
+	public Language getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
 	public Date getCreationDate() {

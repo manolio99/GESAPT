@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.miradorlacala.apt.bo.Price;
 
-public interface ServicePrices {
-	public List<Price> searchAll();
-		
+public interface ServicePricesFromWeb {	
+	public List<Price> getPricesFromWeb();
+	
 }

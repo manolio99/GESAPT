@@ -11,11 +11,37 @@ import javax.persistence.Table;
 public class Libro {
 	@Id
 	private String isbn;
+	
 	private String titulo;
+	
 	@ManyToOne
 	@JoinColumn(name = "categoria")
 	private Categoria categoria;
 
+	public Libro() {
+		super();
+	}
+
+	public Libro(String isbn, String titulo, Categoria categoria) {
+		super();
+		this.isbn = isbn;
+		this.titulo = titulo;
+		this.categoria = categoria;
+	}
+
+	@Override
+	public int hashCode() {
+		return isbn.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		String isbnLibro = ((Libro) o).getIsbn();
+		return isbnLibro.equals(isbn);
+	}
+	
+	// GETTERS & SETTERS
+	
 	public String getIsbn() {
 		return isbn;
 	}
@@ -43,27 +69,5 @@ public class Libro {
 	public Libro(String isbn) {
 		super();
 		this.isbn = isbn;
-	}
-
-	public Libro() {
-		super();
-	}
-
-	public Libro(String isbn, String titulo, Categoria categoria) {
-		super();
-		this.isbn = isbn;
-		this.titulo = titulo;
-		this.categoria = categoria;
-	}
-
-	@Override
-	public int hashCode() {
-		return isbn.hashCode();
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		String isbnLibro = ((Libro) o).getIsbn();
-		return isbnLibro.equals(isbn);
 	}
 }
