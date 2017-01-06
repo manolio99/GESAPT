@@ -1,3 +1,4 @@
+-- cambio minimo prueba home
 -- DROP TABLES
 DROP TABLE `gesapt`.`prices`;
 DROP TABLE `gesapt`.`requests`;
